@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'listpages/vinyl-list.dart';
+import 'listpages/vinyl_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,16 +33,16 @@ class MyHomePage extends StatelessWidget {
       body: Center(child: Text('My Page!')),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.only(top: 20.0),
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-              ),
+            ListTile(
+              title: Text('Book'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
             ListTile(
-              title: Text('Site'),
+              title: Text('Movie'),
               onTap: () {
                 Navigator.pop(context);
               },
