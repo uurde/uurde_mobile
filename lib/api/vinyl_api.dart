@@ -7,7 +7,6 @@ import 'package:uurde_mobile/model/vinyl_model.dart';
 import 'header.dart';
 
 class VinylApi {
-
   static Future<Vinyl> getVinyl() async {
     try {
       final response = await http.get(Header.baseUrl() + '/vinyls/1',
@@ -23,15 +22,17 @@ class VinylApi {
     }
   }
 
-  static Future getVinyls() async {
+  Future getVinyls() async {
     try {
-      final response = await http.get(Header.baseUrl().toString() + '/vinyls',
+      final response = await http.get(
+          Header.baseUrl().toString() + '/vinyls/GetVinylDetails',
           headers: {'Authorization': Header.apiKey().toString()});
       if (response == null) {
         print('Error retrieving units.');
         return null;
       }
-      return response;
+      final responseJson = json.decode(response.body);
+      return responseJson;
     } on Exception catch (e) {
       print('$e');
       return null;

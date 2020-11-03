@@ -22,8 +22,9 @@ class Vinyl {
   String albumCoverPath;
   int albumReleaseYear;
   String albumGenre;
+  String vinylTypeName;
 
-  Vinyl({this.vinylId, this.artistName, this.albumName, this.albumCoverPath, this.albumReleaseYear, this.albumGenre});
+  Vinyl({this.vinylId, this.artistName, this.albumName, this.albumCoverPath, this.albumReleaseYear, this.albumGenre, this.vinylTypeName});
 
   factory Vinyl.fromJson(Map<String, dynamic> json) => new Vinyl(
         vinylId: json['vinylId'],
@@ -32,14 +33,16 @@ class Vinyl {
         albumCoverPath: json['albumCoverPath'],
         albumReleaseYear: json['albumReleaseYear'],
         albumGenre: json['albumGenre'],
+        vinylTypeName: json['vinylTypeName'],
       );
 
   Map<String, dynamic> toJson() => {
-        "vinylId": vinylId,
+        'vinylId': vinylId,
         "artistName": artistName,
         "albumName": albumName,
         "albumCoverPath": albumCoverPath,
         "albumReleaseYear": albumReleaseYear,
         'albumGenre': albumGenre,
+        'vinylTypeName': vinylTypeName,
       };
 }

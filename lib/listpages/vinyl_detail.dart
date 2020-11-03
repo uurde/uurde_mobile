@@ -6,11 +6,12 @@ import 'package:uurde_mobile/model/vinyl_model.dart';
 class VinylDetail extends StatelessWidget {
   final Vinyl vinyl;
   VinylDetail(this.vinyl);
-  Color mainColor = const Color(0xff3C3261);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(appBar: AppBar(
+        title: Text("Vinyl Detail"),
+      ),
         body: new Stack(fit: StackFit.expand, children: [
       new Image.network(vinyl.albumCoverPath, fit: BoxFit.cover),
       new BackdropFilter(
@@ -57,26 +58,12 @@ class VinylDetail extends StatelessWidget {
                       ],
                     ),
                   ),
-                  new Text(vinyl.albumName,
+                  new Text('Album Name: ' + vinyl.albumName,
                       style: new TextStyle(color: Colors.white)),
-                  new Padding(padding: const EdgeInsets.all(10.0)),
-                  new Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: new Container(
-                      padding: const EdgeInsets.all(16.0),
-                      alignment: Alignment.center,
-                      child: new IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        color: Colors.white,
-                      ),
-                      decoration: new BoxDecoration(
-                          borderRadius: new BorderRadius.circular(10.0),
-                          color: const Color(0xaa3C3261)),
-                    ),
-                  ),
+                  new Text('Vinyl Type: ' + vinyl.vinylTypeName,
+                      style: new TextStyle(color: Colors.white)),
+                  new Text('Genre: ' + vinyl.albumGenre,
+                      style: new TextStyle(color: Colors.white)),
                 ],
               )))
     ]));
