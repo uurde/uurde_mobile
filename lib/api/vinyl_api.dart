@@ -7,10 +7,12 @@ import 'package:uurde_mobile/model/vinyl_model.dart';
 import 'header.dart';
 
 class VinylApi {
-  static Future<Vinyl> getVinyl() async {
+  Header _header = new Header();
+
+  Future<Vinyl> getVinyl() async {
     try {
-      final response = await http.get(Header.baseUrl() + '/vinyls/1',
-          headers: {'Authorization': Header.apiKey()});
+      final response = await http.get(_header.baseUrl() + '/vinyls/1',
+          headers: {'Authorization': _header.apiKey()});
       if (response == null || response.statusCode != HttpStatus.ok) {
         print('Error retrieving units.');
         return null;
@@ -25,8 +27,8 @@ class VinylApi {
   Future getVinyls() async {
     try {
       final response = await http.get(
-          Header.baseUrl().toString() + '/vinyls/GetVinylDetails',
-          headers: {'Authorization': Header.apiKey().toString()});
+          _header.baseUrl().toString() + '/vinyls/GetVinylDetails',
+          headers: {'Authorization': _header.apiKey().toString()});
       if (response == null) {
         print('Error retrieving units.');
         return null;

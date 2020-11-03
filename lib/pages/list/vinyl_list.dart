@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uurde_mobile/api/vinyl_api.dart';
 import 'package:uurde_mobile/model/vinyl_model.dart';
 
-import 'vinyl_detail.dart';
+import '../detail/vinyl_detail.dart';
 
 class VinylList extends StatefulWidget {
   @override
@@ -18,8 +18,8 @@ class _MyListScreenState extends State {
   Future<Null> getVinylDetails() async {
     var responseJson = await vinylApi.getVinyls();
     setState(() {
-      for (Map user in responseJson) {
-        _vinylDetails.add(Vinyl.fromJson(user));
+      for (Map vinyl in responseJson) {
+        _vinylDetails.add(Vinyl.fromJson(vinyl));
       }
     });
   }
@@ -31,11 +31,10 @@ class _MyListScreenState extends State {
       return;
     }
     _vinylDetails.forEach((vinylDetail) {
-      if (vinylDetail.artistName.contains(text)) {
+      if (vinylDetail.artistName.toLowerCase().contains(text.toLowerCase())) {
         _searchResult.add(vinylDetail);
       }
     });
-
     setState(() {});
   }
 
@@ -70,7 +69,7 @@ class _MyListScreenState extends State {
                 title: new TextField(
                   controller: textController,
                   decoration: new InputDecoration(
-                      hintText: 'Search', border: InputBorder.none),
+                      hintText: 'Search for band name', border: InputBorder.none),
                   onChanged: onSearchTextChanged,
                 ),
                 trailing: new IconButton(

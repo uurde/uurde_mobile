@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uurde_mobile/pages/list/movie_list.dart';
 
-import 'listpages/vinyl_list.dart';
+import 'pages/list/vinyl_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,7 +45,8 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               title: Text('Movie'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MovieList()));
               },
             ),
             ListTile(
